@@ -20,8 +20,6 @@ public final class EventMapper {
         event.setImage(dto.getImage());
         event.setTitle(dto.getTitle());
         event.setExpectedHours(dto.getExpectedHours());
-        event.setPeriodOf(dto.getPeriodOf());
-        event.setPeriodUntil(dto.getPeriodUntil());
         return event;
     }
 
@@ -39,8 +37,6 @@ public final class EventMapper {
         dto.setContent(event.getContent());
         dto.setExpectedHours(event.getExpectedHours());
         dto.setTitle(event.getTitle());
-        dto.setPeriodOf(event.getPeriodOf());
-        dto.setPeriodUntil(event.getPeriodUntil());
 
         return dto;
     }

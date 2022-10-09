@@ -6,7 +6,6 @@ import br.estacio.campos.estacao.oae.model.Event;
 import br.estacio.campos.estacao.oae.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,8 +47,6 @@ public class EventResource {
                     event.setImage(eventDTO.getImage());
                     event.setTitle(eventDTO.getTitle());
                     event.setExpectedHours(eventDTO.getExpectedHours());
-                    event.setPeriodOf(eventDTO.getPeriodOf());
-                    event.setPeriodUntil(eventDTO.getPeriodUntil());
 
                     Event updated = eventService.save(event);
 

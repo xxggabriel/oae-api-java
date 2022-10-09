@@ -24,7 +24,6 @@ public class EventResource {
     @GetMapping()
     public List<EventDTO> index() {
         return EventMapper.toDTO(eventService.listAll());
-
     }
 
     @GetMapping(value = "/{eventId}")
@@ -34,5 +33,4 @@ public class EventResource {
                     return ResponseEntity.ok().body(event);
                 }).orElse(ResponseEntity.notFound().build());
     }
-
 }

@@ -1,12 +1,14 @@
 package br.estacio.campos.estacao.oae.dto;
 
-import br.estacio.campos.estacao.oae.model.Event;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+import java.time.Instant;
+
 @Getter @Setter
 
-public class EventDTO {
+public class EventDTO implements Serializable {
 
     private Long id;
     private String cod;
@@ -15,7 +17,8 @@ public class EventDTO {
     private String content;
     private String description;
     private int expectedHours;
-    private int periodOf;
-    private int periodUntil;
+    private Instant startDate;
+    private Instant endDate;
+    private Instant cancellationLimit;
 
 }
