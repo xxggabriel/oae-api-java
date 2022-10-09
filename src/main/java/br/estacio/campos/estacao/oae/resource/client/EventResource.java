@@ -5,6 +5,7 @@ import br.estacio.campos.estacao.oae.mapper.EventMapper;
 import br.estacio.campos.estacao.oae.model.Event;
 import br.estacio.campos.estacao.oae.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/events")
+
+@RequestMapping("/api/v1/events")
+@RestController("ClientEventResource")
 public class EventResource {
 
     @Autowired
@@ -22,13 +24,15 @@ public class EventResource {
     @GetMapping()
     public List<EventDTO> index() {
         return EventMapper.toDTO(eventService.listAll());
+
     }
 
     @GetMapping(value = "/{eventId}")
-    public EventDTO show(@PathVariable("eventId") Long eventId) {
-        EventDTO event = EventMapper.toDTO(eventService.findById(eventId));
-
-        return event;
+    public ResponseEntity<Event> show(@PathVariable("eventId") Long eventId){
+        return eventService.findById(eventId)
+                .map(event -> {
+                    return ResponseEntity.ok().body(event);
+                }).orElse(ResponseEntity.notFound().build());
     }
 
 }
