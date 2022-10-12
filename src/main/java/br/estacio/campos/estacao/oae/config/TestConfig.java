@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -26,8 +27,8 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-        Event event1 = new Event(null, "3354", null, "Título", "Conteúdo", "Descrição", 1, null, null, null);
+        String eventImage = "https://inovaprudente.com.br/img/noticias/1476.jpg";
+        Event event1 = new Event(null, "3354", eventImage, "Título", "Conteúdo", "Descrição", "Campus Estácio Estação",4, Instant.parse("2022-10-20T19:30:00Z"), Instant.parse("2022-10-20T21:30:00Z"), null);
         eventRepository.saveAll(Arrays.asList(event1));
 
         String imageAthletic = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhiX0AzY7ZHQ69ufgzuZ5v-Vd4EjqxcQWXVpn6zrGWnDZOsO10cL0SKa1VrUeIXQEXmVE&usqp=CAU";
